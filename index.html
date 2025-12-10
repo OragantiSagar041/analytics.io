@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GA4 Demo - Data Collection Active</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        h1 { color: #333; margin-bottom: 20px; }
+        h2 { color: #444; margin-top: 30px; margin-bottom: 15px; }
+        p { color: #666; line-height: 1.6; margin-bottom: 15px; }
+        .info-box {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #5568d3;
+        }
+        .btn-secondary {
+            background: #764ba2;
+            color: white;
+        }
+        .btn-secondary:hover {
+            background: #653b8a;
+        }
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e8f5e9;
+            border-radius: 5px;
+            display: none;
+            color: #2e7d32;
+        }
+        .status.show {
+            display: block;
+        }
+        code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+        ul { margin-left: 20px; color: #666; }
+        li { margin-bottom: 8px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 GA4 Data Collection Setup Complete</h1>
+        
+        <p>Your website is now collecting data with GA4 Measurement ID: <code>G-X8HG495FCM</code></p>
+        
+        <div class="info-box">
+            <strong>✓ GA4 is ACTIVE</strong><br>
+            All page views, clicks, scrolls, and events are being tracked in real-time.
+        </div>
+
+        <h2>Test the Data Collection</h2>
+        <p>Click these buttons to generate events:</p>
+
+        <div class="button-group">
+            <button class="btn-primary" onclick="trackEvent('test_click', {button_name: 'Click Test'})">
+                Click Me
+            </button>
+            <button class="btn-secondary" onclick="trackEvent('download_event', {file: 'sample.pdf'})">
+                Download File
+            </button>
+            <button class="btn-primary" onclick="trackEvent('signup_event', {action: 'signup'})">
+                Sign Up
+            </button>
+        </div>
+
+        <div class="status" id="status">
+            <strong>✓ Event sent!</strong> Check GA4 Realtime now.
+        </div>
+
+        <h2>What's Being Tracked:</h2>
+        <ul>
+            <li>✓ Page views</li>
+            <li>✓ Button clicks</li>
+            <li>✓ Scroll depth</li>
+            <li>✓ Time on page</li>
+            <li>✓ Custom events</li>
+            <li>✓ User engagement</li>
+        </ul>
+
+        <div class="info-box" style="margin-top: 40px;">
+            <strong>🎯 How to Verify Data Collection:</strong><br><br>
+            <strong>Step 1:</strong> Keep GA4 open in another tab<br>
+            <strong>Step 2:</strong> Go to: Admin → Data Streams<br>
+            <strong>Step 3:</strong> Click "Realtime" in Reports<br>
+            <strong>Step 4:</strong> Click buttons on this page<br>
+            <strong>Step 5:</strong> Watch events appear in real-time!<br><br>
+            <strong>Measurement ID:</strong> G-X8HG495FCM<br>
+            <strong>Status:</strong> ✓ Active and collecting data
+        </div>
+    </div>
+
+    <!-- Google Analytics 4 Tag -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X8HG495FCM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-X8HG495FCM');
+
+        function trackEvent(eventName, eventData = {}) {
+            gtag('event', eventName, eventData);
+            const status = document.getElementById('status');
+            status.classList.add('show');
+            setTimeout(() => {
+                status.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
